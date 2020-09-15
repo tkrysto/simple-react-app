@@ -22,6 +22,14 @@ class Counter extends Component {
       </ul>
     );
   }
+  //   constructor() { //replaced by arrow function syntax as seen in the handleIncrement function below
+  //       super();
+  //       this.handleIncrement = this.handleIncrement.bind(this)
+  //   }
+  handleIncrement = (product) => {
+    console.log("increment clicked", this);
+    this.setState({ count: this.state.count + 1 });
+  };
 
   render() {
     return (
@@ -29,7 +37,12 @@ class Counter extends Component {
         <span /*style={{fontSize: 10}}*/ className={this.getBadgeClasses()}>
           {this.formatCount()}
         </span>
-        <button className="btn btn-secondary btn-small">Increment</button>
+        <button
+          onClick={() => this.handleIncrement(product)}
+          className="btn btn-secondary btn-small"
+        >
+          Increment
+        </button>
         {this.state.tags.length === 0 && "Please create a new tag"}
         {this.renderTags()}
       </React.Fragment>
