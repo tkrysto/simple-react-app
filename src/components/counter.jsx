@@ -23,7 +23,17 @@ class Counter extends Component {
   //       super();
   //       this.handleIncrement = this.handleIncrement.bind(this)
   //   }
-
+  componentDidUpdate(prevProps, prevState) {
+    console.log("prevProp ", prevProps);
+    console.log("prevState ", prevState);
+    if (prevProps.counter.value !== this.props.counter.value) {
+      //ajax call to get data from server
+      console.log("changed");
+    }
+  }
+  componentWillUnmount() {
+    console.log("unmount");
+  }
   render() {
     return (
       <React.Fragment>
